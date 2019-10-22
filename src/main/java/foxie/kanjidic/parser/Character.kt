@@ -14,26 +14,26 @@ data class Character(
         var misc: Miscellaneous,
         @JacksonXmlElementWrapper
         @JsonProperty("dic_number")
-        var numbers: List<Reference>,
+        var numbers: List<Reference>?,
         @JacksonXmlElementWrapper
         @JsonProperty("query_code")
-        var codes: List<Code>,
+        var codes: List<Code>?,
         @JsonProperty("reading_meaning")
-        var readingMeaning: ReadingMeaning
+        var readingMeaning: ReadingMeaning?
 ) {
     data class ReadingMeaning(
             @JsonProperty("rmgroup")
             var group: Group,
             @JacksonXmlElementWrapper(useWrapping = false)
-            var nanori: List<String>
+            var nanori: List<String>?
     ) {
         data class Group(
                 @JacksonXmlElementWrapper(useWrapping = false)
                 @JsonProperty("reading")
-                var readings: List<Reading>,
+                var readings: List<Reading>?,
                 @JacksonXmlElementWrapper(useWrapping = false)
                 @JsonProperty("meaning")
-                var meanings: List<Meaning>
+                var meanings: List<Meaning>?
         ) {
             data class Meaning(
                     @JacksonXmlProperty(isAttribute = true, localName = "m_lang")
@@ -57,7 +57,9 @@ data class Character(
 
     data class Code(
             @JacksonXmlProperty(isAttribute = true, localName = "qc_type")
-            var type: String
+            var type: String,
+            @JacksonXmlProperty(isAttribute = true, localName = "skip_misclass")
+            var skip: String?
     ) {
         @JacksonXmlText
         lateinit var value: String
@@ -78,13 +80,15 @@ data class Character(
     }
 
     data class Miscellaneous(
-            var grade: String,
+            var grade: String?,
             @JsonProperty("stroke_count")
             var strokeCount: String,
-            var variant: Variant,
+            var variant: Variant?,
             @JsonProperty("freq")
-            var frequency: String,
-            var jlpt: String
+            var frequency: String?,
+            var jlpt: String?,
+            @JsonProperty("rad_name")
+            var radicalName: String?
     ) {
         data class Variant(
                 @JacksonXmlProperty(isAttribute = true, localName = "var_type")

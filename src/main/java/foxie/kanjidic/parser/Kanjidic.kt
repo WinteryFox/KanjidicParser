@@ -5,7 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
 
 data class Kanjidic(
         var header: Header,
-        @JacksonXmlElementWrapper
+        @JacksonXmlElementWrapper(useWrapping = false)
         @JsonProperty("character")
         var characters: List<Character>
 ) {
