@@ -7,7 +7,6 @@ import java.io.File
 fun main() {
     val entries = XmlMapper()
             .registerKotlinModule()
-            .readValue(File("../character.xml"), Character::class.java)
-            //.readValue(File("../kanjidic2.xml"), Array<Entry>::class.java)
+            .readValue(File("../kanjidic2.xml"), Kanjidic::class.java)
     println(entries.toString())
 }
