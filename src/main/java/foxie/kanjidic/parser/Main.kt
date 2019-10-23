@@ -45,7 +45,7 @@ fun main() {
         }
 
         character.readingMeaning?.group?.meanings?.forEach {
-            statement.addBatch("INSERT INTO meaning (character, language, reading) VALUES (lastval(), ${if (it.lang == null) "en".asSql() else it.lang.asSql()}, ${it.value.asSql()})");
+            statement.addBatch("INSERT INTO meaning (character, language, reading) VALUES (lastval(), ${if (it.lang == null) "en".asSql() else it.lang.asSql()}, ${it.value.asSql()})")
         }
 
         character.readingMeaning?.group?.readings?.forEach {
