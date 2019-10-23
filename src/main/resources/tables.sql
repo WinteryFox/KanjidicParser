@@ -90,7 +90,7 @@ CREATE TABLE meaning
 (
     character INT  NOT NULL REFERENCES character (id),
     language  TEXT NOT NULL,
-    reading   TEXT NOT NULL,
+    meaning   TEXT NOT NULL,
     PRIMARY KEY (character, language)
 );
 

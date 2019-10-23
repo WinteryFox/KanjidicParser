@@ -14,7 +14,7 @@ CREATE INDEX code_index ON code (character, code);
 
 CREATE INDEX reading_index ON reading (character, type, reading);
 
-CREATE INDEX meaning_index ON meaning (character, language, reading);
+CREATE INDEX meaning_index ON meaning (character, language, meaning);
 
 CREATE INDEX nanori_index ON nanori (character, nanori);
 

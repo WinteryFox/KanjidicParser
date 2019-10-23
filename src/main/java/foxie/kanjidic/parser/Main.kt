@@ -57,7 +57,7 @@ fun main(args: Array<String>) {
                         }
 
                         character.readingMeaning?.group?.meanings?.forEach {
-                            statement.addBatch("INSERT INTO meaning (character, language, reading) VALUES (lastval(), ${if (it.lang == null) "en".asSql() else it.lang.asSql()}, ${it.value.asSql()}) ON CONFLICT DO NOTHING")
+                            statement.addBatch("INSERT INTO meaning (character, language, meaning) VALUES (lastval(), ${if (it.lang == null) "en".asSql() else it.lang.asSql()}, ${it.value.asSql()}) ON CONFLICT DO NOTHING")
                         }
 
                         character.readingMeaning?.group?.readings?.forEach {
