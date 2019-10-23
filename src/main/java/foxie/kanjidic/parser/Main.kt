@@ -62,4 +62,7 @@ fun main() {
     } catch (e: BatchUpdateException) {
         e.nextException?.printStackTrace()
     }
+
+    connection.createStatement()
+            .execute(Main::class.java.getResource("/indices.sql").readText())
 }
