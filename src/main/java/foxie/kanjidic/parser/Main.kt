@@ -60,7 +60,6 @@ fun main() {
     try {
         statement.executeBatch()
     } catch (e: BatchUpdateException) {
-        println(e.updateCounts.size)
-        e.nextException.printStackTrace()
+        e.nextException?.printStackTrace()
     }
 }
