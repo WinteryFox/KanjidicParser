@@ -14,7 +14,7 @@ data class Character(
         var misc: Miscellaneous,
         @JacksonXmlElementWrapper
         @JsonProperty("dic_number")
-        var numbers: List<Reference>?,
+        var references: List<Reference>?,
         @JacksonXmlElementWrapper
         @JsonProperty("query_code")
         var codes: List<Code>?,
