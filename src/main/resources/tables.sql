@@ -73,7 +73,7 @@ CREATE TABLE code
     character INT  NOT NULL REFERENCES character (id),
     type      TEXT NOT NULL,
     code      TEXT NOT NULL,
-    PRIMARY KEY (character, code)
+    PRIMARY KEY (character, type, code)
 );
 
 DROP TABLE IF EXISTS reading;
@@ -82,7 +82,7 @@ CREATE TABLE reading
     character INT  NOT NULL REFERENCES character (id),
     type      TEXT NOT NULL,
     reading   TEXT NOT NULL,
-    PRIMARY KEY (character, type)
+    PRIMARY KEY (character, type, reading)
 );
 
 DROP TABLE IF EXISTS meaning;
@@ -91,14 +91,15 @@ CREATE TABLE meaning
     character INT  NOT NULL REFERENCES character (id),
     language  TEXT NOT NULL,
     meaning   TEXT NOT NULL,
-    PRIMARY KEY (character, language)
+    PRIMARY KEY (character, language, meaning)
 );
 
 DROP TABLE IF EXISTS nanori;
 CREATE TABLE nanori
 (
-    character INT  NOT NULL REFERENCES character (id) PRIMARY KEY,
-    nanori    TEXT NOT NULL
+    character INT  NOT NULL REFERENCES character,
+    nanori    TEXT NOT NULL,
+    PRIMARY KEY (character, nanori)
 );
 
 END;
