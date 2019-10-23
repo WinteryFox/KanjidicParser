@@ -12,8 +12,11 @@ class Main
 fun String?.asSql() = if (this == null) "NULL" else "'${this.replace("'", "''")}'"
 
 fun main(args: Array<String>) {
-    if (args.size != 4)
-        println("This program takes 4 arguments in the following order: the ip of the server, the database name, the username, the password.")
+    if (args.size != 4) {
+        println("This program takes 4 arguments in the following order: the ip of the server, the database name, the username, the password.\n" +
+                "For example: java -jar kanjidicparser.jar \"localhost\" \"kanjidic\" \"foxie\" \"test123\"")
+        return
+    }
 
     println("Downloading Kanjidic2 from the internet...")
     val file = GZIPInputStream(URL("http://www.edrdg.org/kanjidic/kanjidic2.xml.gz").openStream())
