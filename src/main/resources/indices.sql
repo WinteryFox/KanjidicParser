@@ -1,21 +1,39 @@
 BEGIN;
 
-CREATE INDEX character_index ON character (id, literal);
+CREATE INDEX character_literal_index ON character (literal);
 
-CREATE INDEX codepoint_index ON codepoint (character, type, codepoint);
+CREATE INDEX codepoint_type_index ON codepoint (type);
 
-CREATE INDEX radical_index ON radical (character, type, radical);
+CREATE INDEX codepoint_codepoint_index ON codepoint (codepoint);
 
-CREATE INDEX miscellaneous_index ON miscellaneous (character, grade, stroke_count, frequency, variant_type, variant, jlpt, radical_name);
+CREATE INDEX radical_type_index ON radical (type);
 
-CREATE INDEX dictionary_index ON dictionary (character, dictionary, value);
+CREATE INDEX radical_type_index ON radical (type);
 
-CREATE INDEX code_index ON code (character, code);
+CREATE INDEX radical_radical_index ON radical (radical);
 
-CREATE INDEX reading_index ON reading (character, type, reading);
+CREATE INDEX miscellaneous_grade_index ON miscellaneous (grade);
 
-CREATE INDEX meaning_index ON meaning (character, language, meaning);
+CREATE INDEX miscellaneous_stroke_count_index ON miscellaneous (stroke_count);
 
-CREATE INDEX nanori_index ON nanori (character, nanori);
+CREATE INDEX miscellaneous_frequency_index ON miscellaneous (frequency);
+
+CREATE INDEX miscellaneous_jlpt_index ON miscellaneous (jlpt);
+
+CREATE INDEX miscellaneous_radical_name_index ON miscellaneous (radical_name);
+
+CREATE INDEX dictionary_value_index ON dictionary (value);
+
+CREATE INDEX dictionary_dictionary_index ON dictionary (dictionary);
+
+CREATE INDEX code_index ON code (code);
+
+CREATE INDEX reading_index ON reading (reading);
+
+CREATE INDEX meaning_meaning_index ON meaning (lower(meaning));
+
+CREATE INDEX meaning_language_index ON meaning (lower(language));
+
+CREATE INDEX nanori_index ON nanori (nanori);
 
 END;
