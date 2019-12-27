@@ -28,7 +28,9 @@ CREATE INDEX dictionary_dictionary_index ON dictionary (dictionary);
 
 CREATE INDEX code_index ON code (code);
 
-CREATE INDEX reading_index ON reading (reading);
+CREATE INDEX reading_reading_index ON reading (reading);
+
+CREATE INDEX reading_type_index ON reading (type);
 
 CREATE INDEX meaning_meaning_index ON meaning (lower(meaning));
 

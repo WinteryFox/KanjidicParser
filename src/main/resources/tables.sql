@@ -26,7 +26,9 @@ DROP INDEX IF EXISTS dictionary_dictionary_index;
 
 DROP INDEX IF EXISTS code_index;
 
-DROP INDEX IF EXISTS reading_index;
+DROP INDEX IF EXISTS reading_reading_index;
+
+DROP INDEX IF EXISTS reading_type_index;
 
 DROP INDEX IF EXISTS meaning_meaning_index;
 
