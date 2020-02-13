@@ -3,8 +3,7 @@ BEGIN;
 DROP TABLE IF EXISTS character CASCADE;
 CREATE TABLE character
 (
-    id      SMALLSERIAL NOT NULL PRIMARY KEY,
-    literal TEXT        NOT NULL
+    literal TEXT        NOT NULL PRIMARY KEY
 );
 
 DROP TABLE IF EXISTS codepoint;
