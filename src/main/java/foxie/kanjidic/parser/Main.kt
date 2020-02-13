@@ -75,11 +75,6 @@ fun main(args: Array<String>) {
                         e.nextException?.printStackTrace()
                     }
                 }
-
-                println("Creating indices...")
-                connection.createStatement().use { statement ->
-                    statement.execute(Main::class.java.getResource("/indices.sql").readText())
-                }
             }
 
     println("Done!")
