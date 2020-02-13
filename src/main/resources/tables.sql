@@ -3,13 +3,13 @@ BEGIN;
 DROP TABLE IF EXISTS character CASCADE;
 CREATE TABLE character
 (
-    literal TEXT        NOT NULL PRIMARY KEY
+    literal TEXT NOT NULL PRIMARY KEY
 );
 
 DROP TABLE IF EXISTS codepoint;
 CREATE TABLE codepoint
 (
-    character INT  NOT NULL REFERENCES character (id),
+    character TEXT NOT NULL REFERENCES character (literal),
     type      TEXT NOT NULL,
     codepoint TEXT NOT NULL,
     PRIMARY KEY (character, type)
@@ -18,7 +18,7 @@ CREATE TABLE codepoint
 DROP TABLE IF EXISTS radical;
 CREATE TABLE radical
 (
-    character INT  NOT NULL REFERENCES character (id),
+    character TEXT NOT NULL REFERENCES character (literal),
     type      TEXT NOT NULL,
     radical   INT  NOT NULL,
     PRIMARY KEY (character, type)
@@ -27,9 +27,9 @@ CREATE TABLE radical
 DROP TABLE IF EXISTS miscellaneous;
 CREATE TABLE miscellaneous
 (
-    character    INT NOT NULL PRIMARY KEY REFERENCES character (id),
+    character    TEXT NOT NULL PRIMARY KEY REFERENCES character (literal),
     grade        INT,
-    stroke_count INT NOT NULL,
+    stroke_count INT  NOT NULL,
     frequency    INT,
     variant_type TEXT,
     variant      TEXT,
@@ -40,7 +40,7 @@ CREATE TABLE miscellaneous
 DROP TABLE IF EXISTS dictionary;
 CREATE TABLE dictionary
 (
-    character  INT  NOT NULL REFERENCES character (id),
+    character  TEXT NOT NULL REFERENCES character (literal),
     dictionary TEXT NOT NULL,
     volume     INT,
     page       INT,
@@ -51,7 +51,7 @@ CREATE TABLE dictionary
 DROP TABLE IF EXISTS code;
 CREATE TABLE code
 (
-    character INT  NOT NULL REFERENCES character (id),
+    character TEXT NOT NULL REFERENCES character (literal),
     type      TEXT NOT NULL,
     code      TEXT NOT NULL,
     PRIMARY KEY (character, type, code)
@@ -60,7 +60,7 @@ CREATE TABLE code
 DROP TABLE IF EXISTS reading;
 CREATE TABLE reading
 (
-    character INT  NOT NULL REFERENCES character (id),
+    character TEXT NOT NULL REFERENCES character (literal),
     type      TEXT NOT NULL,
     reading   TEXT NOT NULL,
     PRIMARY KEY (character, type, reading)
@@ -69,7 +69,7 @@ CREATE TABLE reading
 DROP TABLE IF EXISTS meaning;
 CREATE TABLE meaning
 (
-    character INT  NOT NULL REFERENCES character (id),
+    character TEXT NOT NULL REFERENCES character (literal),
     language  TEXT NOT NULL,
     meaning   TEXT NOT NULL,
     PRIMARY KEY (character, language, meaning)
@@ -78,7 +78,7 @@ CREATE TABLE meaning
 DROP TABLE IF EXISTS nanori;
 CREATE TABLE nanori
 (
-    character INT  NOT NULL REFERENCES character,
+    character TEXT NOT NULL REFERENCES character (literal),
     nanori    TEXT NOT NULL,
     PRIMARY KEY (character, nanori)
 );
